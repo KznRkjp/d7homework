@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <a class="nav-item nav-link active" href="../../index/"> Моя библиотека <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="../../author/create">Создать автора</a>
+      <a class="nav-item nav-link" href="../../authors">Список авторов</a>
+      <a class="nav-item nav-link" href="../../friend/create">Добавить друга</a>
+      <a class="nav-item nav-link" href="../../author/create_many">Создать сразу двух авторов</a>
+      <a class="nav-item nav-link" href="../../author_book/create_many">Создать автора с книгой</a>
+      <a class="nav-item nav-link" href="../../admin">Адм. пенель</a>
+      <a class="nav-item nav-link" href=../../login/>Login</a>
+      <a class="nav-item nav-link" href=../../logout/>Logout</a>
+      <a class="nav-item nav-link" href=../../register/>Зарегистрироваться</a>
+
+    </nav>
+    </div>
+    <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  </body>
+</html>

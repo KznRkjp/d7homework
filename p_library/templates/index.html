@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>Мои книги</title>
+<div class="container">
+
+Добро пожаловать в {{ title }}. <br>
+Тут собрано {{ books|length }} книг из моей личной коллекции. <br>
+
+<table class="table table-striped">
+    <th>Название</th>
+      <th>ISBN</th>
+      <th>Описание</th>
+      <th>Год издания</th>
+      <th>Автор</th>
+      <th>Страна</th>
+      <th>Количество экземпляров</th>
+      <th>У друга</th>
+      <th></th>
+
+    {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.ISBN }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.year_release }}</td>
+            <td>{{ book.author.full_name }}</td>
+            <td>{{ book.author.country }}</td>
+            <td>{{ book.copy_count }}</td>
+            {% if book.friend %}
+              <td>{{ book.friend }}</td>
+            {% else %}
+            <td>нет</td>
+            {%endif%}
+            <td>
+                <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{book.id}}" />
+                    <input type="submit" value="+1" />
+                </form>
+                <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{book.id}}" />
+                    <input type="submit" value="-1" />
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
